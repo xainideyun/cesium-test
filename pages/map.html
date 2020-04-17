@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>地形图层</title>
+    <script src="/scripts/Cesium/Cesium.js"></script>
+    <style>
+        @import url(/styles/index.css);
+    </style>
+</head>
+
+<body>
+    <div id="cesiumContainer"></div>
+    <script>
+        var viewer = new Cesium.Viewer('cesiumContainer')
+        // 将全球提醒数据加载到场景
+        var terrainProvider = Cesium.createWorldTerrain({
+            // 开启地形光照和水面效果
+            requestVertexNormals: true,
+            requestWaterMask: true
+        })
+        viewer.terrainProvider = terrainProvider
+        viewer.scene.globe.enableLighting = true
+    </script>
+</body>
+
+</html>

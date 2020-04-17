@@ -1,0 +1,10 @@
+@import '../scripts/Cesium/Widgets/widgets.css';
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+#cesiumContainer {
+    height: 100%;
+}

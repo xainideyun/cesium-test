@@ -1,0 +1,342 @@
+/* *********************** 通用设置开始 *********************** */
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #000;
+    font-size: 14px;
+}
+
+/* 注册btn */
+.btn-register {
+    color: #ffffff;
+    background-color: #0AB4f7;
+    border-color: #F4F7F7;
+}
+ 
+.btn-register:hover,
+.btn-register:focus,
+.btn-register:active,
+.btn-register.active,
+.open .dropdown-toggle.btn-register {
+    color: #ffffff;
+    background-color: #086DF2;
+    border-color: #F4F7F7;
+}
+ 
+.btn-register:active,
+.btn-register.active,
+.open .dropdown-toggle.btn-register {
+    background-image: none;
+}
+ 
+.btn-register.disabled,
+.btn-register[disabled],
+fieldset[disabled] .btn-register,
+.btn-register.disabled:hover,
+.btn-register[disabled]:hover,
+fieldset[disabled] .btn-register:hover,
+.btn-register.disabled:focus,
+.btn-register[disabled]:focus,
+fieldset[disabled] .btn-register:focus,
+.btn-register.disabled:active,
+.btn-register[disabled]:active,
+fieldset[disabled] .btn-register:active,
+.btn-register.disabled.active,
+.btn-register[disabled].active,
+fieldset[disabled] .btn-register.active {
+    background-color: #0AB4F7;
+    border-color: #F4F7F7;
+}
+ 
+.btn-register .badge {
+    color: #0AB4F7;
+    background-color: #ffffff;
+}
+
+@font-face {
+    font-family: ty;
+    src:url('../fonts/fonts/icomoon.woff') format('woff'),
+    url('../lib/fonts/fonts/icomoon.ttf') format('truetype'),
+    url('../lib/fonts/fonts/icomoon.svg') format('svg'),
+    url('../lib/fonts/fonts/icomoon.eot') format('embedded-opentype'); /* IE9 */
+}
+
+[class^='icon-'],
+[class*=' icon-']{
+    font-family: ty;
+    font-style: normal;
+}
+
+/* *********************** 通用设置结束 *********************** */
+
+/* *********************** header 开始 *********************** */
+#ty-header {
+    margin: 0 auto;
+    height: 40px;
+    line-height: 39px;     
+    background-color: #555;
+}
+
+#ty-header .top-bar {
+    border-bottom: 1px solid #eee; 
+} 
+
+.top-bar-1 a {
+    position: relative;
+}
+
+.top-bar-1 a img {
+    display: none;
+    position: absolute;
+    left: 50%;
+    margin-left: -80px; 
+    margin-top: -10px;
+    z-index: 9999;
+}
+
+.top-bar-1 a:hover img {
+    display: block;
+}
+
+#ty-header .top-bar .container .row .top-bar-4 .sign {
+    margin-left: 10px;
+}
+
+#ty-header .top-bar .container .row>div+div {
+    border-left: 1px solid #eee;
+}
+
+.icon-phone::before {
+    content: '\e958';
+    font-size: 14px;
+}
+
+.icon-tel::before {
+    content: '\e942';
+    font-size: 14px;
+}
+
+/* navbar开始 */
+#ty-header .ty-navbar {
+    background: #555;
+    color: #fff;
+}
+#ty-header .ty-navbar h1 {
+    color: #fff;
+}
+
+#ty-header .navbar-brand {
+    height: 70px;
+    padding: 5px 15px;
+}
+
+#ty-header #ty-navbar>ul>li>a {
+    height: 70px;
+    line-height: 40px;
+}
+
+#ty-header #ty-navbar ul li.active a,
+#ty-header #ty-navbar ul li a:hover
+{
+    background-color: transparent;
+    border-bottom: 2px solid #0AB4f7;
+}
+
+#ty-header .ty-navbar .navbar-toggle {
+    margin-top: 18px;
+}
+/* navbar结束 */
+/* *********************** header 结束 *********************** */
+
+/* *********************** banner 开始 *********************** */
+#ty-banner {
+    margin-top: 70px;
+}
+
+#ty-banner .item {
+    background: no-repeat center center;
+    -webkit-background-size : cover !important;
+    background-size: cover !important;
+}
+
+@media screen and (min-width: 500px) {
+    #ty-banner .item {
+        height: 600px;
+    }
+}
+/* *********************** banner 结束 *********************** */
+
+/* *********************** 产品特色 开始 *********************** */
+ 
+#ty-product {
+    background: #f0f0f0;
+    padding: 30px 0;
+}
+
+#ty-product .nav {
+    font-size: 18px;
+}
+
+#ty-product .nav a {
+    font-size: 18px;
+    color: #999;
+}
+
+#ty-product .nav li.active a {
+    background: none;
+    border: none;
+    border-bottom: 2px solid #0AB4f7;
+    color: #000;
+}
+
+#ty-product .container {
+    padding-top: 20px;
+}
+
+#ty-product .pd-left {
+    padding: 40px 0;
+}
+
+#pd_one_1 {
+    margin: 10px 0;
+}
+
+#pd_one_2 {
+    background-color: transparent;
+}
+
+#pd_two_2, #pd_three_1 {
+    padding-top: 90px;
+}
+/* *********************** 产品特色 结束 *********************** */
+
+
+/* *********************** 关于我们 开始 *********************** */
+
+
+#ty-abuout .title,
+#ty-hot .title,
+#ty-link .title
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+#ty-abuout .title img,
+#ty-hot .title img,
+#ty-link .title img
+{
+    height: 20px;
+}
+
+#ty-abuout .row p {
+    line-height: 30px;
+    font-size: 15px;
+}
+
+#ty-abuout .row img {
+    height: 300px;
+}
+/* *********************** 关于我们 结束 *********************** */
+
+/* *********************** 热门课程 开始 *********************** */
+#ty-hot .lesson {
+    padding: 15px 10px;
+}
+
+#ty-hot .lesson .media-left {
+    width: 20%;
+}
+
+#ty-hot .lesson .media-body {
+    width: 60%;
+    vertical-align: center;
+}
+
+#ty-hot .lesson .media-right {
+    width: 20%;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+/* *********************** 热门课程 结束 *********************** */
+/* *********************** 友情链接 开始 *********************** */
+#ty-link .logs {
+    list-style: none;
+    text-align: center;
+}
+
+#ty-link .logs li {
+    display: inline-block;
+    padding: 10px 10px;
+}
+
+#ty-link .logs li a img{
+    height: 110px;
+}
+/* *********************** 友情链接 结束 *********************** */
+
+/* *********************** footer 开始 *********************** */
+#ty-footer {
+    width: 100%;
+    height: 200px;
+    background: rgb(44, 38, 38);
+    color: rgb(183, 185, 183);
+    list-style: none;
+    font-size: 16px;
+}
+
+#ty-footer ul {
+    list-style: none;
+}
+
+#ty-footer .one, #ty-footer .two {
+    padding: 10px;
+    border-right: 1px solid #666;
+    height: 180px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#ty-footer .one li {
+    line-height: 40px;
+    color: rgb(183, 185, 183);
+}
+
+#ty-footer .one li a {
+    color: rgb(183, 185, 183);
+}
+
+#ty-footer .three {
+    padding: 30px 10px;
+    height: 180px;
+}
+
+#ty-footer .three a {
+    display: inline-block;
+}
+
+#ty-footer .three a img {
+    width: 50px;
+}
+/* *********************** footer 结束 *********************** */
+
+/* *********************** 登录 开始 *********************** */
+#ty-login button, #ty-login input {
+     outline: none;
+}
+
+#ty-login .modal-body>div {
+    margin:15px 20px;
+}
+
+#ty-login .modal-body>div>input {
+    margin-left: 15px;
+    width: 200px;
+}
+/* *********************** 登录 结束 *********************** */

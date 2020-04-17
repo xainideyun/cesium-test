@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cesiumjs.org/releases/1.51/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesiumjs.org/releases/1.51/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/app.css">
+</head>
+
+<body>
+    <div id="cesiumContainer"></div>
+    <script>
+        /** 影像图层：通过多种服务来源的高精度影像（地图）数据加载和渲染的视图
+         * 
+         * 
+         * */
+        Cesium.Ion.defaultAccessToken =
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyNzNmYjI2Zi0xYjRhLTRkYzAtYjgzNC02YjlmNzE3MDViYjYiLCJpZCI6MjU4NDEsInNjb3BlcyI6WyJhc2wiLCJhc3IiLCJhc3ciLCJnYyIsInByIl0sImlhdCI6MTU4Njc0Nzg2OX0.vi0M-QhBfUPGY3_4NH3cZ14XtM3a_BCUpLsQrZZL-d8'
+        var viewer = new Cesium.Viewer('cesiumContainer', {
+            imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
+                url: '//services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer'
+            }),
+            baseLayerPicker: false
+        })
+        var layers = viewer.scene.imageryLayers;
+        var blackMarble = layers.addImageryProvider(new Cesium.createTileMapServiceImageryProvider({
+            url: '//cesiumjs.org/tilesets/imagery/blackmarble',
+            proxy : new Cesium.DefaultProxy('/proxy/'),
+            maximumLevel: 8,
+            credit: 'Black Marble imagery courtesy NASA Earth Observatory'
+        }));
+    </script>
+</body>
+
+</html>

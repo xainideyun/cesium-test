@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Entity几何体</title>
+    <!-- <script src="./scripts/Cesium/Cesium.js"></script> -->
+    <script src="https://cesiumjs.org/releases/1.51/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesiumjs.org/releases/1.51/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/app.css">
+</head>
+
+<body>
+    <div id="cesiumContainer"></div>
+    <script>
+        Cesium.Ion.defaultAccessToken =
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyNzNmYjI2Zi0xYjRhLTRkYzAtYjgzNC02YjlmNzE3MDViYjYiLCJpZCI6MjU4NDEsInNjb3BlcyI6WyJhc2wiLCJhc3IiLCJhc3ciLCJnYyIsInByIl0sImlhdCI6MTU4Njc0Nzg2OX0.vi0M-QhBfUPGY3_4NH3cZ14XtM3a_BCUpLsQrZZL-d8'
+        // var viewer = new Cesium.Viewer('cesiumContainer', {
+        //     terrainProvider: Cesium.createWorldTerrain()
+        // });
+        /** 
+         * 可视化图形数据的种类
+         * 1. 六面体盒子：box
+         * 2. 圆和椭圆：ellipse
+         * 3. 通道：corridor
+         * 4. 圆柱和圆锥：cylinder
+         * 5. 多边形：polygon
+         * 6. 折线：polyline
+         * 7. 折线容器：polylineVolume
+         * 8. 矩形：rectangle
+         * 9. 球和椭球：ellipsoid
+         * 10.墙：wall
+         * 
+         * 材质种类：颜色、图片、网格、条纹
+         * entityCollection改变监听：viewer.entities.collectionChanged.addEventListener(onChanged)
+         * */
+
+        var viewer = new Cesium.Viewer('cesiumContainer');
+
+        var wyoming = viewer.entities.add({
+            name: '多边形',
+            polygon: {
+                hierarchy: Cesium.Cartesian3.fromDegreesArray([
+                    -109.080842, 45.002073,
+                    -105.91517, 45.002073,
+                    -104.058488, 44.996596,
+                    -104.053011, 43.002989,
+                    -104.053011, 41.003906,
+                    -105.728954, 40.998429,
+                    -107.919731, 41.003906,
+                    -109.04798, 40.998429,
+                    -111.047063, 40.998429,
+                    -111.047063, 42.000709,
+                    -111.047063, 44.476286,
+                    -111.05254, 45.002073
+                ]),
+                height: 200000,
+                extrudedHeight: 250000,
+                material: Cesium.Color.RED.withAlpha(0.5),
+                outline: true,
+                outlineColor: Cesium.Color.WHITE
+            },
+            description: '一个高度50000m，距离地面200000m的多边形'
+        })
+
+        // 视图直接定位到entity
+        // viewer.zoomTo(wyoming).then(function (a) {
+        //     console.log(a)
+        // })
+        // 视图动画飞行至entity
+        viewer.flyTo(wyoming).then(function (result) {
+            if (result) {
+                viewer.selectedEntity = wyoming;
+            }
+        });
+        
+    </script>
+</body>
+
+</html>
