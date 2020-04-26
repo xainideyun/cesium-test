@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>几何体和外观效果</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../scripts/Cesium/Cesium.js"></script>
+    <style>
+        @import url(../styles/index.css);
+    </style>
+</head>
+
+<body>
+    <div id="cesiumContainer"></div>
+    <script>
+        var viewer = new Cesium.Viewer('cesiumContainer');
+        var scene = viewer.scene;
+
+        var ellipsoidGeometry = new Cesium.EllipsoidGeometry({
+            vertexFormat: Cesium.PerInstanceColorAppearance.VERTEX_FORMAT,
+            radii: new Cesium.Cartesian3(300000.0, 200000.0, 150000.0)
+        });
+
+        var cyanEllipsoidInstance = new Cesium.GeometryInstance({
+            geometry: ellipsoidGeometry,
+            modelMatrix: Cesium.Matrix4.multiplyByTranslation(
+                Cesium.Transforms.eastNorthUpToFixedFrame(Cesium.Cartesian3.fromDegrees(-100.0, 40.0)),
+                new Cesium.Cartesian3(0.0, 0.0, 150000.0),
+                new Cesium.Matrix4()
+            ),
+            attributes: {
+                color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.CYAN)
+            }
+        });
+
+        var orangeEllipsoidInstance = new Cesium.GeometryInstance({
+            geometry: ellipsoidGeometry,
+            modelMatrix: Cesium.Matrix4.multiplyByTranslation(
+                Cesium.Transforms.eastNorthUpToFixedFrame(Cesium.Cartesian3.fromDegrees(-100.0, 40.0)),
+                new Cesium.Cartesian3(0.0, 0.0, 450000.0),
+                new Cesium.Matrix4()
+            ),
+            attributes: {
+                color: Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.ORANGE)
+            }
+        });
+
+        scene.primitives.add(new Cesium.Primitive({
+            geometryInstances: [cyanEllipsoidInstance, orangeEllipsoidInstance],
+            appearance: new Cesium.PerInstanceColorAppearance({
+                translucent: false,
+                closed: true
+            })
+        }));
+
+        function setPosition() {
+            viewer.camera.setView({
+                destination: Cesium.Cartesian3.fromDegrees(-50.0, 70.0, 8000000), // 设置目标区域（笛卡尔）：经度、纬度、高度
+                orientation: {
+                    heading: 1.0, // 由北向东旋转的角度
+                    pitch: -1, // 方向与水平面的夹角
+                    roll: 1.0 // 方向向量以正东方向为轴的旋转角度
+                }
+            });
+        }
+
+        setPosition()
+    </script>
+</body>
+
+</html>

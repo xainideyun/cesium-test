@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../scripts/Cesium/Cesium.js"></script>
+    <style>
+        @import url(../styles/index.css);
+    </style>
+</head>
+
+<body>
+    <div id="cesiumContainer"></div>
+    <script>
+        var viewer = new Cesium.Viewer('cesiumContainer', {
+            infoBox: false,
+            selectionIndicator: false,
+            shadows: true,
+            shouldAnimate: true
+        })
+
+        const scene = viewer.scene // 得到当前的场景
+        const lng = -75.62898254394531
+        const lat = 40.02804946899414
+
+        // 在指定的坐标创建一个模型矩阵（经度，纬度，高度）
+        const modelMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(Cesium.Cartesian3.fromDegrees(lng, lat, 5000))
+        const model = scene.primitives.add(Cesium.Model.fromGltf({
+            url: '../assets/Cesium_Air.glb', // 3D模型的资源路径
+            modelMatrix,
+            scale: 200 // 放大倍数
+        }))
+
+        // 播放模型动画
+        Cesium.when(model.readyPromise).then(function (model) {
+            model.activeAnimations.addAll({
+                loop: Cesium.ModelAnimationLoop.REPEAT
+            });
+        });
+
+        // 将相机定位到指定的未知
+        viewer.camera.setView({
+            destination: Cesium.Cartesian3.fromDegrees(lng, lat - 0.05, 15000), // 设置目标区域（笛卡尔）：经度、纬度、高度
+            orientation: {
+                heading: 0.0, // 由北向东旋转的角度
+                pitch: -1, // 方向与水平面的夹角
+                roll: 0.0 // 方向向量以正东方向为轴的旋转角度
+            }
+        });
+    </script>
+</body>
+
+</html>
